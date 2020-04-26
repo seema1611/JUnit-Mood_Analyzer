@@ -2,6 +2,8 @@ package com.moodanalyzer.main;
 
 import com.moodanalyzer.exception.MoodAnalyzerException;
 
+import java.util.Objects;
+
 public class MoodAnalyzer {
     String message;
 
@@ -18,7 +20,7 @@ public class MoodAnalyzer {
     }
 
     //Paramerized method
-    public String analyzeMood(String message) {
+    public static String analyzeMood(String message) throws MoodAnalyzerException {
         try
         {
             if (message.isEmpty()) {
@@ -35,7 +37,25 @@ public class MoodAnalyzer {
     }
 
     //Default method
-    public String analyzeMood() {
+    public String analyzeMood() throws MoodAnalyzerException {
         return analyzeMood(this.message);
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+        MoodAnalyzer that=(MoodAnalyzer)obj;
+        return Objects.equals(message,that.message);
+    }
+
+    //Main method
+    public static void main(String args[]) {
+        System.out.println("Welcome to mood analyzer");
     }
 }

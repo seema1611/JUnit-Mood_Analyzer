@@ -1,10 +1,12 @@
 package com.moodanalyzer.exception;
 
-public class MoodAnalyzerException extends RuntimeException
+import javafx.scene.image.Image;
+
+public class MoodAnalyzerException extends Exception
 {
     public enum ExceptionType
     {
-        NULL,EMPTY
+        NULL,EMPTY,NO_SUCH_CLASS
     }
     public ExceptionType type;
     public MoodAnalyzerException(ExceptionType type,String message)
