@@ -54,7 +54,7 @@ public class MoodAnalyzerTest {
             analyzer.analyzeMood();
         } catch (MoodAnalyzerException e)
         {
-            assertEquals(MoodAnalyzerException.ExceptionType.NULL,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NULL,e.type);
         }
     }
 
@@ -67,53 +67,63 @@ public class MoodAnalyzerTest {
             analyzer.analyzeMood();
         } catch (MoodAnalyzerException e)
         {
-            assertEquals(MoodAnalyzerException.ExceptionType.EMPTY,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.EMPTY,e.type);
         }
     }
 
     //TC-4.1
     @Test
-    public void givenMoodAnalyseClass_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
+    public void givenMoodAnalyzeClass_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.main.MoodAnalyzer","I am In Happy Mood");
         Assert.assertEquals(moodAnalyserFactoryObj.analyzeMood(), MoodAnalyzer.analyzeMood("I am In Happy Mood"));
     }
 
     //TC-4.2
     @Test
-    public void givenMoodAnalyseClass_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
+    public void givenMoodAnalyzeClass_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
         try
         {
             MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"", "I am In Happy Mood");
         }catch (MoodAnalyzerException e) {
-            assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
         }
     }
 
     //TC-4.3
     @Test
-    public void givenMoodAnalyseMethod_WhenImproper_ShouldReturnException() throws MoodAnalyzerException {
+    public void givenMoodAnalyzeMethod_WhenImproper_ShouldReturnException() throws MoodAnalyzerException {
         try {
             MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer", "I am In Happy Mood");
         }catch (MoodAnalyzerException e) {
-            assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
         }
     }
 
     //TC-5.1
     @Test
-    public void givenMoodAnalyseClassConstructor_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
+    public void givenMoodAnalyzeClassConstructor_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.main.MoodAnalyzer");
         Assert.assertEquals(moodAnalyserFactoryObj.analyzeMood("I am In Happy Mood"), MoodAnalyzer.analyzeMood("I am In Happy Mood"));
     }
 
     //TC-5.2
     @Test
-    public void givenMoodAnalyseClassConstructor_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
+    public void givenMoodAnalyzeClassConstructor_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
         try
         {
             MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"");
         }catch (MoodAnalyzerException e) {
-            assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+        }
+    }
+
+    //TC-5.3
+    @Test
+    public void givenMoodAnalyzeConstructorMethod_WhenImproper_ShouldReturnException() throws MoodAnalyzerException {
+        try {
+            MoodAnalyzer moodAnalyser = MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer");
+        } catch (MoodAnalyzerException e) {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, e.type);
         }
     }
 }
