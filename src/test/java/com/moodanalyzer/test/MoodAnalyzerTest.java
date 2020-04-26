@@ -83,7 +83,7 @@ public class MoodAnalyzerTest {
     public void givenMoodAnalyseClass_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
         try
         {
-            MoodAnalyzer moodAnalyser = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"", "I am In Happy Mood");
+            MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"", "I am In Happy Mood");
         }catch (MoodAnalyzerException e) {
             assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
         }
@@ -93,7 +93,7 @@ public class MoodAnalyzerTest {
     @Test
     public void givenMoodAnalyseMethod_WhenImproper_ShouldReturnException() throws MoodAnalyzerException {
         try {
-            MoodAnalyzer moodAnalyser = MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer", "I am In Happy Mood");
+            MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer", "I am In Happy Mood");
         }catch (MoodAnalyzerException e) {
             assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
         }
@@ -104,5 +104,16 @@ public class MoodAnalyzerTest {
     public void givenMoodAnalyseClassConstructor_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
         MoodAnalyzer moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.main.MoodAnalyzer");
         Assert.assertEquals(moodAnalyserFactoryObj.analyzeMood("I am In Happy Mood"), MoodAnalyzer.analyzeMood("I am In Happy Mood"));
+    }
+
+    //TC-5.2
+    @Test
+    public void givenMoodAnalyseClassConstructor_WhenImproper_ShouldThrowException() throws MoodAnalyzerException {
+        try
+        {
+            MoodAnalyzer  moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"");
+        }catch (MoodAnalyzerException e) {
+            assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS,e.type);
+        }
     }
 }
