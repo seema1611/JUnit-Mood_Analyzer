@@ -17,10 +17,14 @@ public class MoodAnalyzer {
 
     //Paramerized method
     public String analyzeMood(String message) {
-        if (message.contains("Sad"))
-            return "Sad";
-        else
+        try {
+            if (message.contains("Sad"))
+                return "Sad";
+            else
+                return "Happy";
+        }catch (NullPointerException e) {
             return "Happy";
+        }
     }
 
 

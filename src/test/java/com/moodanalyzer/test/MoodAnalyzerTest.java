@@ -33,4 +33,11 @@ public class MoodAnalyzerTest {
         MoodAnalyzer analyzer = new MoodAnalyzer("I Am In Any Mood");
         Assert.assertEquals("Happy",analyzer.analyzeMood());
     }
+
+    //TC-2.1
+    @Test
+    public void givenMood_WhenNullMessage_ShouldReturnReturnHappy() {
+        MoodAnalyzer analyzer = new MoodAnalyzer(null);
+        Assert.assertEquals("Happy",analyzer.analyzeMood());
+    }
 }
