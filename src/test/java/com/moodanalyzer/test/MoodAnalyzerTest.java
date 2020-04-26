@@ -93,9 +93,16 @@ public class MoodAnalyzerTest {
     @Test
     public void givenMoodAnalyseMethod_WhenImproper_ShouldReturnException() throws MoodAnalyzerException {
         try {
-            MoodAnalyzer moodAnalyser =MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer", "I am In Happy Mood");
+            MoodAnalyzer moodAnalyser = MoodAnalyzerFactory.createMoodAnalyzer(Integer.class, "com.moodanalyzer.main.MoodAnalyzer", "I am In Happy Mood");
         }catch (MoodAnalyzerException e) {
             assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD,e.type);
         }
+    }
+
+    //TC-5.1
+    @Test
+    public void givenMoodAnalyseClassConstructor_WhenProper_ShouldReturnObject() throws MoodAnalyzerException {
+        MoodAnalyzer moodAnalyserFactoryObj = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.main.MoodAnalyzer");
+        Assert.assertEquals(moodAnalyserFactoryObj.analyzeMood("I am In Happy Mood"), MoodAnalyzer.analyzeMood("I am In Happy Mood"));
     }
 }

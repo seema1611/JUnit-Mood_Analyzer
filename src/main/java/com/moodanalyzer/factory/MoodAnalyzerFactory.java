@@ -7,6 +7,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyzerFactory {
+    private Class className;
+    private String path;
+    private String mood;
     public static MoodAnalyzer createMoodAnalyzer(Class className, String path, String mood) throws MoodAnalyzerException {
         try {
             Class<?> moodAnalyserClass = Class.forName(path);
@@ -25,6 +28,10 @@ public class MoodAnalyzerFactory {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static MoodAnalyzer createMoodAnalyzer(Class className, String path) throws MoodAnalyzerException {
+        return createMoodAnalyzer(className,path,null);
     }
 }
 
