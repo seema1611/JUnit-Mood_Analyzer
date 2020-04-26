@@ -36,8 +36,8 @@ public class MoodAnalyzerFactory {
     }
 
     public static String Invoke(Class className, String path, String mood) throws MoodAnalyzerException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = MoodAnalyzer.class.getDeclaredMethod("analyzeMood",String.class);
-        Object value = method.invoke(new MoodAnalyzer(),mood);
+        Method m = MoodAnalyzer.class.getMethod("analyzeMood",String.class);
+        Object value = m.invoke(new MoodAnalyzer(),mood);
         return (String) value;
     }
 }
