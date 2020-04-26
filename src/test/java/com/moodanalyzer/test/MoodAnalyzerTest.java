@@ -6,6 +6,8 @@ import com.moodanalyzer.main.MoodAnalyzer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.Assert.assertEquals;
 
 public class MoodAnalyzerTest {
@@ -125,5 +127,12 @@ public class MoodAnalyzerTest {
         } catch (MoodAnalyzerException e) {
             Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_METHOD, e.type);
         }
+    }
+
+    //TC-6.1
+    @Test
+    public void giveMoodReflection_WhenHappyMessage_ShouldReturnHappy() throws NoSuchMethodException, IllegalAccessException, MoodAnalyzerException, InvocationTargetException {
+        MoodAnalyzerFactory obj = new MoodAnalyzerFactory();
+        Assert.assertEquals("Happy",obj.Invoke(String.class,"com.moodanalyzer.main.MoodAnalyzer","I Am In Happy Mood"));
     }
 }
