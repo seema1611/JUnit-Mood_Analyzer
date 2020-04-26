@@ -6,7 +6,7 @@ public class MoodAnalyzerException extends Exception
 {
     public enum ExceptionType
     {
-        NULL,EMPTY,NO_SUCH_CLASS
+        NULL,EMPTY,NO_SUCH_CLASS,NO_SUCH_METHOD
     }
     public ExceptionType type;
     public MoodAnalyzerException(ExceptionType type,String message)
