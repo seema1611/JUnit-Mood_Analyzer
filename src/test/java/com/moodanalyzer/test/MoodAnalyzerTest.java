@@ -54,4 +54,15 @@ public class MoodAnalyzerTest {
             assertEquals(MoodAnalyzerException.ExceptionType.NULL,e.type);
         }
     }
+
+    //TC-3.2
+    @Test
+    public void givenMood_WhenEmptyMessage_ShouldReturnReturnHappy() {
+        try {
+            MoodAnalyzer analyzer = new MoodAnalyzer("");
+        } catch (MoodAnalyzerException e)
+        {
+            assertEquals(MoodAnalyzerException.ExceptionType.EMPTY,e.type);
+        }
+    }
 }

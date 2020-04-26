@@ -4,7 +4,7 @@ public class MoodAnalyzerException extends RuntimeException
 {
     public enum ExceptionType
     {
-        NULL
+        NULL,EMPTY
     }
     public ExceptionType type;
     public MoodAnalyzerException(ExceptionType type,String message)
