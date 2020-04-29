@@ -1,4 +1,4 @@
-package com.moodanalyzer.main;
+package com.moodanalyzer.first;
 
 import com.moodanalyzer.exception.MoodAnalyzerException;
 
@@ -8,14 +8,12 @@ public class MoodAnalyzer {
     String message;
 
     //Default Constructor
-    public MoodAnalyzer()
-    {
+    public MoodAnalyzer() {
 
     }
 
     //Parameterized constructor and pass string parameter
-    public MoodAnalyzer(String message)
-    {
+    public MoodAnalyzer(String message) {
         this.message=message;
     }
 
@@ -42,10 +40,8 @@ public class MoodAnalyzer {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
         if(obj == null || getClass() != obj.getClass())
