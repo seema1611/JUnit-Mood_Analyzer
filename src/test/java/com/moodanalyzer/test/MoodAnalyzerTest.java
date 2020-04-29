@@ -154,4 +154,17 @@ public class MoodAnalyzerTest {
         Assert.assertEquals("I am In Happy Mood",mood);
     }
 
+    //TC-7.2
+    @Test
+    public void givenFieldNameAndValue_whenFieldNotFound_shouldThrowMoodAnalyserException()
+    {
+        try
+        {
+            MoodAnalyzer moodObject = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.first.MoodAnalyzer","I am In Happy Mood");
+            MoodAnalyzerFactory.setFieldValue(moodObject, "I am In Happy Mood", "message1");
+        } catch (MoodAnalyzerException e)
+        {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_FIELD,e.type);
+        }
+    }
 }
