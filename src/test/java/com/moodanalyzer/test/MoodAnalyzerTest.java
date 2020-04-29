@@ -167,4 +167,17 @@ public class MoodAnalyzerTest {
             Assert.assertEquals(MoodAnalyzerException.ExceptionType.NO_SUCH_FIELD,e.type);
         }
     }
+
+    //Tc-7.3
+    @Test
+    public void givenFieldNameAndNullValue_WhenSettingNullMessage_shouldThrowMoodAnalyzerException() {
+        try
+        {
+            MoodAnalyzer moodObject = MoodAnalyzerFactory.createMoodAnalyzer(String.class,"com.moodanalyzer.first.MoodAnalyzer","I am In Happy Mood");
+            MoodAnalyzerFactory.setFieldValue(moodObject, null, "message");
+        } catch (MoodAnalyzerException e)
+        {
+            Assert.assertEquals(MoodAnalyzerException.ExceptionType.METHOD_INVOCATION_ISSUE,e.type);
+        }
+    }
 }
